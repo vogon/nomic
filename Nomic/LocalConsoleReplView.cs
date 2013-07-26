@@ -12,6 +12,9 @@ namespace Nomic
 
         async Task<string> IReplView.Read()
         {
+            Console.Write("nomic> ");
+            Console.Out.Flush();
+
             string result = await Console.In.ReadLineAsync();
 
             return result;
