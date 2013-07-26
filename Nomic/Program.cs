@@ -1,4 +1,10 @@
-﻿using System;
+﻿using IronPython.Runtime;
+using IronPython.Hosting;
+using Microsoft.Scripting;
+using Microsoft.Scripting.Hosting;
+using System.Dynamic;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +16,13 @@ namespace Nomic
     {
         static void Main(string[] args)
         {
+            ScriptEngine e = Python.CreateEngine();
+
+            Repl repl = new Repl(new LocalConsoleReplView(), e);
+
+            Task t = repl.Main();
+
+            t.Wait();
         }
     }
 }
