@@ -1,7 +1,7 @@
 ﻿using Microsoft.Scripting.Hosting;
-
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +21,30 @@ namespace Nomic
         {
             while (!_exitRequested)
             {
-                // read
-                string next = await _view.Read();
-
-                // evaluate
-                ScriptSource src = _engine.CreateScriptSourceFromString(next);
-                dynamic result = src.Execute(_scope);
-
-                // print
-                await _view.Print(result);
+                await RepOnce();
             }
+        }
+
+        internal async Task RepOnce()
+        {
+            // read
+            string next = await _view.Read();
+
+            // evaluate
+            dynamic result = null;
+
+            try
+            {
+                ScriptSource src = _engine.CreateScriptSourceFromString(next);
+                result = src.Execute(_scope);
+            }
+            catch (Exception e)
+            {
+                result = e;
+            }
+
+            // print
+            await _view.Print(result);
         }
 
         private bool _exitRequested;

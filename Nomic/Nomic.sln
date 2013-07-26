@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nomic", "Nomic.csproj", "{92389DE1-6E70-49F8-BC8F-4530EC80F927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nomic.Test", "..\Nomic.Test\Nomic.Test.csproj", "{770FCDDF-D8CE-4149-BC59-88BB5A5675B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{92389DE1-6E70-49F8-BC8F-4530EC80F927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92389DE1-6E70-49F8-BC8F-4530EC80F927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92389DE1-6E70-49F8-BC8F-4530EC80F927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770FCDDF-D8CE-4149-BC59-88BB5A5675B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770FCDDF-D8CE-4149-BC59-88BB5A5675B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770FCDDF-D8CE-4149-BC59-88BB5A5675B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770FCDDF-D8CE-4149-BC59-88BB5A5675B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
