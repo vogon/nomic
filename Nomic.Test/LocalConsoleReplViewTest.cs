@@ -9,7 +9,7 @@ namespace Nomic.Test
         [TestInitialize]
         public void Initialize()
         {
-            _view = new LocalConsoleReplView();
+            _view = new ConsoleReplView();
         }
 
         [TestMethod]
@@ -25,6 +25,6 @@ namespace Nomic.Test
             }
         }
 
-        LocalConsoleReplView _view;
+        ConsoleReplView _view;
     }
 }

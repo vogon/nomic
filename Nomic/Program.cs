@@ -18,7 +18,7 @@ namespace Nomic
         private static void ServeLocalInteraction()
         {
             IronPythonReplLanguage lang = new IronPythonReplLanguage();
-            Repl repl = new Repl(new LocalConsoleReplView(), lang);
+            Repl repl = new Repl(new ConsoleReplView(), lang);
 
             Task t = repl.Main();
 
