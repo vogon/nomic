@@ -22,7 +22,14 @@ namespace Nomic
 
         async Task IReplView.Print(dynamic result)
         {
-            await Console.Out.WriteLineAsync(result.ToString());
+            if (result == null)
+            {
+                await Console.Out.WriteLineAsync();
+            }
+            else
+            {
+                await Console.Out.WriteLineAsync(result.ToString());
+            }
         }
     }
 }

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ReplTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LocalConsoleReplViewTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nomic\Nomic.csproj">
