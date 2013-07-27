@@ -16,9 +16,8 @@ namespace Nomic
     {
         static void Main(string[] args)
         {
-            ScriptEngine e = Python.CreateEngine();
-
-            Repl repl = new Repl(new LocalConsoleReplView(), e);
+            IronPythonReplLanguage lang = new IronPythonReplLanguage();
+            Repl repl = new Repl(new LocalConsoleReplView(), lang);
 
             Task t = repl.Main();
 

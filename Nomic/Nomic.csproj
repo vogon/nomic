@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DlrReplLanguage.cs" />
+    <Compile Include="IReplLanguage.cs" />
     <Compile Include="IReplView.cs" />
     <Compile Include="LocalConsoleReplView.cs" />
     <Compile Include="Program.cs" />

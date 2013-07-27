@@ -39,9 +39,11 @@ namespace Nomic.Test
         [TestInitialize]
         public void Initialize()
         {
-            ScriptEngine e = Python.CreateEngine();
             this._view = new View();
-            this._repl = new Repl(this._view, e);
+
+            IronPythonReplLanguage lang = new IronPythonReplLanguage();
+
+            this._repl = new Repl(this._view, lang);
         }
 
         [TestMethod]

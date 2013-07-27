@@ -10,11 +10,10 @@ namespace Nomic
 {
     internal sealed class Repl
     {
-        internal Repl(IReplView view, ScriptEngine engine)
+        internal Repl(IReplView view, IReplLanguage language)
         {
             this._view = view;
-            this._engine = engine;
-            this._scope = _engine.CreateScope();
+            this._language = language;
         }
 
         internal async Task Main()
@@ -35,12 +34,21 @@ namespace Nomic
 
             try
             {
-                ScriptSource src = _engine.CreateScriptSourceFromString(next);
-                result = src.Execute(_scope);
+                this._language.Eval(next);
             }
             catch (Exception e)
             {
-                result = e;
+                switch (this._language.ExceptionTypeForException(e))
+                {
+                case ExceptionType.ExitRequested:
+                    this._exitRequested = true;
+                    break;
+                case ExceptionType.InternalError:
+                    throw e;
+                case ExceptionType.UserError:
+                    result = e;
+                    break;
+                }
             }
 
             // print
@@ -49,8 +57,6 @@ namespace Nomic
 
         private bool _exitRequested;
         private IReplView _view;
-
-        private ScriptEngine _engine;
-        private ScriptScope _scope;
+        private IReplLanguage _language;
     }
 }
