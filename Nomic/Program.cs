@@ -8,13 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nomic
 {
     internal static class Program
     {
-        static void Main(string[] args)
+        private static void ServeLocalInteraction()
         {
             IronPythonReplLanguage lang = new IronPythonReplLanguage();
             Repl repl = new Repl(new LocalConsoleReplView(), lang);
@@ -22,6 +23,20 @@ namespace Nomic
             Task t = repl.Main();
 
             t.Wait();
+        }
+
+        private static void ServeRemoteInteractions()
+        {
+
+        }
+
+        static void Main(string[] args)
+        {
+            Thread thr = new Thread(ServeLocalInteraction);
+
+            thr.Start();
+
+            thr.Join();
         }
     }
 }
