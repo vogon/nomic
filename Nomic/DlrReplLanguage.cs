@@ -9,7 +9,7 @@ using Microsoft.Scripting.Hosting;
 
 namespace Nomic
 {
-    abstract class DlrReplLanguage
+    internal abstract class DlrReplLanguage
     {
         public DlrReplLanguage(ScriptEngine engine)
         {
@@ -27,7 +27,7 @@ namespace Nomic
         private ScriptScope _replScope;
     }
 
-    internal class IronPythonReplLanguage : DlrReplLanguage, IReplLanguage
+    internal sealed class IronPythonReplLanguage : DlrReplLanguage, IReplLanguage
     {
         public IronPythonReplLanguage() : base(Python.CreateEngine()) { }
 
