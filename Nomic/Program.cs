@@ -25,18 +25,23 @@ namespace Nomic
             t.Wait();
         }
 
-        private static void ServeRemoteInteractions()
+        private static async void ServeRemoteInteractions()
         {
+            ReplServer sv = new ReplServer(new System.Net.IPEndPoint(0, 3569));
 
+            await sv.Run();
         }
 
         static void Main(string[] args)
         {
             Thread thr = new Thread(ServeLocalInteraction);
+            Thread thr2 = new Thread(ServeRemoteInteractions);
 
             thr.Start();
+            thr2.Start();
 
             thr.Join();
+            thr2.Join();
         }
     }
 }
