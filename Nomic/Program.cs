@@ -17,12 +17,17 @@ namespace Nomic
     {
         private static void ServeLocalInteraction()
         {
-            IronPythonReplLanguage lang = new IronPythonReplLanguage();
-            Repl repl = new Repl(new ConsoleReplView(), lang);
+            while (true)
+            {
+                IronPythonReplLanguage lang = new IronPythonReplLanguage();
+                Repl repl = new Repl(new ConsoleReplView(), lang);
 
-            Task t = repl.Main();
+                Task t = repl.Main();
 
-            t.Wait();
+                t.Wait();
+
+                Console.Out.WriteLine("!!! local interaction detached; restarting (XXX to shut down server)...");
+            }
         }
 
         private static async void ServeRemoteInteractions()
