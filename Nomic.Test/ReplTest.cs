@@ -54,6 +54,14 @@ namespace Nomic.Test
             this._repl.RepOnce().Wait();
         }
 
+        [TestMethod]
+        public void SmokeTestConstant()
+        {
+            this._view.NextRead = "3";
+            this._view.NextPrintExpect = (o) => { Assert.AreEqual(o, 3); };
+            this._repl.RepOnce().Wait();
+        }
+
         Repl _repl;
         View _view;
     }
