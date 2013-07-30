@@ -34,7 +34,7 @@ namespace Nomic
 
             try
             {
-                this._language.Eval(next);
+                result = this._language.Eval(next);
             }
             catch (Exception e)
             {
