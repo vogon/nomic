@@ -28,7 +28,7 @@ namespace Nomic
 
                 if (!_shutdown)
                 {
-                    Console.Out.WriteLine("!!! local interaction detached; restarting (XXX to shut down server)...");
+                    Console.Out.WriteLine("!!! local interaction detached; restarting (server.Shutdown() to shut down server)...");
                 }
             }
         }

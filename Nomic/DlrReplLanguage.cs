@@ -15,8 +15,11 @@ namespace Nomic
         {
             this._engine = engine;
             this._replScope = this._engine.CreateScope();
+        }
 
-            this._replScope.SetVariable("server", new ServerProxy());
+        protected void ExportGlobal(string name, object value)
+        {
+            this._replScope.SetVariable(name, value);
         }
 
         protected dynamic Eval(string code)
@@ -32,6 +35,11 @@ namespace Nomic
     internal sealed class IronPythonReplLanguage : DlrReplLanguage, IReplLanguage
     {
         public IronPythonReplLanguage() : base(Python.CreateEngine()) { }
+
+        void IReplLanguage.ExportGlobal(string name, object value)
+        {
+            base.ExportGlobal(name, value);
+        }
 
         dynamic IReplLanguage.Eval(string code)
         {

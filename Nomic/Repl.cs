@@ -16,8 +16,15 @@ namespace Nomic
             this._language = language;
         }
 
+        internal void RequestExit()
+        {
+            this._exitRequested = true;
+        }
+
         internal async Task Main()
         {
+            this._language.ExportGlobal("server", new ServerProxy(this));
+
             while (!_exitRequested)
             {
                 await RepOnce();

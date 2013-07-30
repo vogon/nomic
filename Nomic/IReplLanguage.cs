@@ -15,6 +15,8 @@ namespace Nomic
 
     internal interface IReplLanguage
     {
+        void ExportGlobal(string name, object value);
+
         dynamic Eval(string code);
         ExceptionType ExceptionTypeForException(Exception e);
     }

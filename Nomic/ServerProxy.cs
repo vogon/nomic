@@ -8,14 +8,18 @@ namespace Nomic
 {
     public class ServerProxy
     {
-        public ServerProxy() { }
+        internal ServerProxy(Repl repl)
+        {
+            this._repl = repl;
+        }
 
         public void Shutdown()
         {
             Program.Shutdown();
 
-            // HACK: doesn't work in non-ipy languages
-            throw new IronPython.Runtime.Exceptions.SystemExitException();
+            this._repl.RequestExit();
         }
+
+        private Repl _repl;
     }
 }
