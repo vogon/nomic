@@ -17,7 +17,7 @@ namespace Nomic
     {
         private static void ServeLocalInteraction()
         {
-            while (true)
+            while (!_shutdown)
             {
                 IronPythonReplLanguage lang = new IronPythonReplLanguage();
                 Repl repl = new Repl(new ConsoleReplView(), lang);
@@ -26,7 +26,10 @@ namespace Nomic
 
                 t.Wait();
 
-                Console.Out.WriteLine("!!! local interaction detached; restarting (XXX to shut down server)...");
+                if (!_shutdown)
+                {
+                    Console.Out.WriteLine("!!! local interaction detached; restarting (XXX to shut down server)...");
+                }
             }
         }
 
@@ -36,6 +39,13 @@ namespace Nomic
 
             await sv.Run();
         }
+
+        internal static void Shutdown()
+        {
+            _shutdown = true;
+        }
+
+        private static bool _shutdown = false;
 
         static void Main(string[] args)
         {

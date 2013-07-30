@@ -15,6 +15,8 @@ namespace Nomic
         {
             this._engine = engine;
             this._replScope = this._engine.CreateScope();
+
+            this._replScope.SetVariable("server", new ServerProxy());
         }
 
         protected dynamic Eval(string code)
@@ -42,7 +44,9 @@ namespace Nomic
             {
                 return ExceptionType.ExitRequested;
             }
-            else if (e is IronPython.Runtime.UnboundNameException)
+            else if (e is IronPython.Runtime.UnboundNameException ||
+                     e is IronPython.Runtime.Exceptions.ImportException ||
+                     e is System.MissingMemberException)
             {
                 return ExceptionType.UserError;
             }
