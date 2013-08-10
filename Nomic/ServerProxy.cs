@@ -15,7 +15,7 @@ namespace Nomic
 
         public void Shutdown()
         {
-            Program.Shutdown();
+            Program.Instance.Shutdown();
 
             this._repl.RequestExit();
         }

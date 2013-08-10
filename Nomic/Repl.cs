@@ -21,6 +21,14 @@ namespace Nomic
             this._exitRequested = true;
         }
 
+        internal void LoadScripts(IEnumerable<Script> scripts)
+        {
+            foreach (Script s in scripts)
+            {
+                this._language.Eval(s.Code);
+            }
+        }
+
         internal async Task Main()
         {
             this._language.ExportGlobal("server", new ServerProxy(this));
