@@ -19,7 +19,7 @@ namespace Nomic
         {
             while (!_shutdown)
             {
-                IronPythonReplLanguage lang = new IronPythonReplLanguage();
+                IronPythonEvaluationContext lang = new IronPythonEvaluationContext();
                 Repl repl = new Repl(new ConsoleReplView(), lang);
 
                 Task t = repl.Main();

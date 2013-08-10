@@ -41,7 +41,7 @@ namespace Nomic.Test
         {
             this._view = new View();
 
-            IronPythonReplLanguage lang = new IronPythonReplLanguage();
+            IronPythonEvaluationContext lang = new IronPythonEvaluationContext();
 
             this._repl = new Repl(this._view, lang);
         }

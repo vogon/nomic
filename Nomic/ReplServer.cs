@@ -40,7 +40,7 @@ namespace Nomic
                 TextWriter w = new StreamWriter(stream);
 
                 ConsoleReplView view = new ConsoleReplView(r, w);
-                Repl repl = new Repl(view, new IronPythonReplLanguage());
+                Repl repl = new Repl(view, new IronPythonEvaluationContext());
 
                 client.Repl = repl;
 

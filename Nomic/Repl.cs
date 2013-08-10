@@ -10,7 +10,7 @@ namespace Nomic
 {
     internal sealed class Repl
     {
-        internal Repl(IReplView view, IReplLanguage language)
+        internal Repl(IReplView view, IEvaluationContext language)
         {
             this._view = view;
             this._language = language;
@@ -64,6 +64,6 @@ namespace Nomic
 
         private bool _exitRequested;
         private IReplView _view;
-        private IReplLanguage _language;
+        private IEvaluationContext _language;
     }
 }
