@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>nomicweb test</title>
+
+		<link rel="stylesheet" href="css/composer.css">
+		<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	</head>
+
+	<body>
+		<div class="sidebar">
+			<div class="bigtext">nomic</div>
+
+			<ul class="sidebar-nav">
+				<li>users</li>
+				<li>scripts</li>
+				<li class="selected">interaction pane</li>
+			</ul>
+		</div>
+
+		<div class="content">
+			<ul class="topbar-nav">
+				<li>what is?</li>
+				<li>what do?</li>
+				<li>about</li>
+				<li>github</li>
+			</ul>
+
+			<div class="editor-frame">
+				<textarea id="codemirror-target"></textarea>
+			</div>
+		</div>
+
+		<script src="codemirror/lib/codemirror.js"></script>
+		<script src="codemirror/mode/python/python.js"></script>
+
+		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="js/composer.js"></script>
+	</body>
+</html>
